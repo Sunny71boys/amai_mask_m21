@@ -1,0 +1,52 @@
+            - ｎａｍｅ: Ｕｐｌｏａｄ ａ Ｂｕｉｌｄ Ａｒｔｉｆａｃｔ
+  ｕｓｅｓ: ａｃｔｉｏｎｓ/ｕｐｌｏａｄ-ａｒｔｉｆａｃｔ@ｖ4.3.4            - name: Setup Node.js environment
+  uses: actions/setup-node@v4.0.3
+  with:
+    # Set always-auth in npmrc.
+    always-auth: # optional, default is false
+    # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
+    node-version: # optional
+    # File containing the version Spec of the version to use.  Examples: package.json, .nvmrc, .node-version, .tool-versions.
+    node-version-file: # optional
+    # Target architecture for Node to use. Examples: x86, x64. Will use system architecture by default.
+    architecture: # optional
+    # Set this option if you want the action to check for the latest available version that satisfies the version spec.
+    check-latest: # optional
+    # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN.
+    registry-url: # optional
+    # Optional scope for authenticating against scoped registries. Will fall back to the repository owner when using the GitHub Packages registry (https://npm.pkg.github.com/).
+    scope: # optional
+    # Used to pull node distributions from node-versions. Since there's a default, this is typically not supplied by the user. When running this action on github.com, the default value is sufficient. When running on GHES, you can pass a personal access token for github.com if you are experiencing rate limiting.
+    token: # optional, default is ${{ github.server_url == 'https://github.com' && github.token || '' }}
+    # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm.
+    cache: # optional
+    # Used to specify the path to a dependency file: package-lock.json, yarn.lock, etc. Supports wildcards or a list of file names for caching multiple dependencies.
+    cache-dependency-path: # optional
+          
+  ｗｉｔｈ:
+    # Ａｒｔｉｆａｃｔ ｎａｍｅ
+    ｎａｍｅ: # ｏｐｔｉｏｎａｌ, ｄｅｆａｕｌｔ ｉｓ ａｒｔｉｆａｃｔ
+    # Ａ ｆｉｌｅ, ｄｉｒｅｃｔｏｒｙ ｏｒ ｗｉｌｄｃａｒｄ ｐａｔｔｅｒｎ ｔｈａｔ ｄｅｓｃｒｉｂｅｓ ｗｈａｔ ｔｏ ｕｐｌｏａｄ
+    ｐａｔｈ: 
+    # Ｔｈｅ ｄｅｓｉｒｅｄ ｂｅｈａｖｉｏｒ ｉｆ ｎｏ ｆｉｌｅｓ ａｒｅ ｆｏｕｎｄ ｕｓｉｎｇ ｔｈｅ ｐｒｏｖｉｄｅｄ ｐａｔｈ.
+Ａｖａｉｌａｂｌｅ Ｏｐｔｉｏｎｓ:
+  ｗａｒｎ: Ｏｕｔｐｕｔ ａ ｗａｒｎｉｎｇ ｂｕｔ ｄｏ ｎｏｔ ｆａｉｌ ｔｈｅ ａｃｔｉｏｎ
+  ｅｒｒｏｒ: Ｆａｉｌ ｔｈｅ ａｃｔｉｏｎ ｗｉｔｈ ａｎ ｅｒｒｏｒ ｍｅｓｓａｇｅ
+  ｉｇｎｏｒｅ: Ｄｏ ｎｏｔ ｏｕｔｐｕｔ ａｎｙ ｗａｒｎｉｎｇｓ ｏｒ ｅｒｒｏｒｓ, ｔｈｅ ａｃｔｉｏｎ ｄｏｅｓ ｎｏｔ ｆａｉｌ
+
+    ｉｆ-ｎｏ-ｆｉｌｅｓ-ｆｏｕｎｄ: # ｏｐｔｉｏｎａｌ, ｄｅｆａｕｌｔ ｉｓ ｗａｒｎ
+    # Ｄｕｒａｔｉｏｎ ａｆｔｅｒ ｗｈｉｃｈ ａｒｔｉｆａｃｔ ｗｉｌｌ ｅｘｐｉｒｅ ｉｎ ｄａｙｓ. 0 ｍｅａｎｓ ｕｓｉｎｇ ｄｅｆａｕｌｔ ｒｅｔｅｎｔｉｏｎ.
+Ｍｉｎｉｍｕｍ 1 ｄａｙ. Ｍａｘｉｍｕｍ 90 ｄａｙｓ ｕｎｌｅｓｓ ｃｈａｎｇｅｄ ｆｒｏｍ ｔｈｅ ｒｅｐｏｓｉｔｏｒｙ ｓｅｔｔｉｎｇｓ ｐａｇｅ.
+
+    ｒｅｔｅｎｔｉｏｎ-ｄａｙｓ: # ｏｐｔｉｏｎａｌ
+    # Ｔｈｅ ｌｅｖｅｌ ｏｆ ｃｏｍｐｒｅｓｓｉｏｎ ｆｏｒ Ｚｌｉｂ ｔｏ ｂｅ ａｐｐｌｉｅｄ ｔｏ ｔｈｅ ａｒｔｉｆａｃｔ ａｒｃｈｉｖｅ. Ｔｈｅ ｖａｌｕｅ ｃａｎ ｒａｎｇｅ ｆｒｏｍ 0 ｔｏ 9: - 0: Ｎｏ ｃｏｍｐｒｅｓｓｉｏｎ - 1: Ｂｅｓｔ ｓｐｅｅｄ - 6: Ｄｅｆａｕｌｔ ｃｏｍｐｒｅｓｓｉｏｎ (ｓａｍｅ ａｓ ＧＮＵ Ｇｚｉｐ) - 9: Ｂｅｓｔ ｃｏｍｐｒｅｓｓｉｏｎ Ｈｉｇｈｅｒ ｌｅｖｅｌｓ ｗｉｌｌ ｒｅｓｕｌｔ ｉｎ ｂｅｔｔｅｒ ｃｏｍｐｒｅｓｓｉｏｎ, ｂｕｔ ｗｉｌｌ ｔａｋｅ ｌｏｎｇｅｒ ｔｏ ｃｏｍｐｌｅｔｅ. Ｆｏｒ ｌａｒｇｅ ｆｉｌｅｓ ｔｈａｔ ａｒｅ ｎｏｔ ｅａｓｉｌｙ ｃｏｍｐｒｅｓｓｅｄ, ａ ｖａｌｕｅ ｏｆ 0 ｉｓ ｒｅｃｏｍｍｅｎｄｅｄ ｆｏｒ ｓｉｇｎｉｆｉｃａｎｔｌｙ ｆａｓｔｅｒ ｕｐｌｏａｄｓ.
+
+    ｃｏｍｐｒｅｓｓｉｏｎ-ｌｅｖｅｌ: # ｏｐｔｉｏｎａｌ, ｄｅｆａｕｌｔ ｉｓ 6
+    # Ｉｆ ｔｒｕｅ, ａｎ ａｒｔｉｆａｃｔ ｗｉｔｈ ａ ｍａｔｃｈｉｎｇ ｎａｍｅ ｗｉｌｌ ｂｅ ｄｅｌｅｔｅｄ ｂｅｆｏｒｅ ａ ｎｅｗ ｏｎｅ ｉｓ ｕｐｌｏａｄｅｄ. Ｉｆ ｆａｌｓｅ, ｔｈｅ ａｃｔｉｏｎ ｗｉｌｌ ｆａｉｌ ｉｆ ａｎ ａｒｔｉｆａｃｔ ｆｏｒ ｔｈｅ ｇｉｖｅｎ ｎａｍｅ ａｌｒｅａｄｙ ｅｘｉｓｔｓ. Ｄｏｅｓ ｎｏｔ ｆａｉｌ ｉｆ ｔｈｅ ａｒｔｉｆａｃｔ ｄｏｅｓ ｎｏｔ ｅｘｉｓｔ.
+
+    ｏｖｅｒｗｒｉｔｅ: # ｏｐｔｉｏｎａｌ, ｄｅｆａｕｌｔ ｉｓ ｆａｌｓｅ
+          
+
+
+
+
